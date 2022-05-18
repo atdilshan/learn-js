@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var txt = "Apple, Banana, Kiwi";
+        var part = txt.slice(-12, -6);
+        document.write(part + "<br>");
+
+        var part = txt.substring(0, 13);
+        document.write(part + "<br>");
+
+        var part = txt.substr(15, 4);
+        document.write(part + "<br>");
+
+        var rep = txt.replace("Apple", "Orange");
+        document.write(rep + "<br>");
+
+        var rep = txt.replace(/Apple/i, "Orange");
+        document.write(rep + "<br>");
+
+        var txt2 = txt.toUpperCase();
+        document.write(txt2 + "<br>");
+
+        var txt2 = txt.toLowerCase();
+        document.write(txt2 + "<br><br><br><br><br><br><br><br>");
+    </script>
+
+    <script>
+        var text1 = "Hello";
+        var text2 = "World";
+        document.write(text1.concat(" ", text2) + "<br>");
+
+        var text = "Hello" + " " + "world";
+        document.write("Hello".concat(" ", "world") + "<br>");
+
+        let text3 = "      Hello World!      Hi!";
+        document.write(text3.trim() + "<br>");
+
+        let pad1 = "5";
+        document.write(pad1.padStart(4,"x") + "<br>");
+
+        let pad2 = "5";
+        document.write(pad2.padEnd(4,"x") + "<br>");
+    </script>
+</body>
+</html>

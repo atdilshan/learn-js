@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arrow Function</title>
+</head>
+<body style="font-size: 50px;">
+    <script>
+
+        let myFunction = (a, b, c) => a * b * c;
+        document.write( myFunction(4, 5, 2));
+
+        var x=10;
+        var x=19;
+        y=x+1;
+        document.write(y);
+
+        document.write("<br>");
+        let z=0;
+        while (z<=10){
+            z+=1;
+            document.write(z+"<br>");
+        }
+        
+    </script>
+
+    <br>
+
+    <!-- Before -->
+    <script>
+        var f1;
+        
+        f1 = function() {
+        return "Hello World!";
+        }
+        
+        document.write(f1());
+    </script>
+
+    <br>
+
+    <!-- with arrow function -->
+    <!-- <script>
+        
+        var f2 = () => {
+            return "Hello World!";
+        
+        document.write(f2());
+    </script> -->
+
+    <br>
+
+    <!-- Arrow function with a parameter -->
+    <!-- <script>
+        var f3;
+        
+        f3 = (val) => "Hello " + val;
+        
+        document.write(f3("Universe!"));
+    </script> -->
+
+    <script>
+        person={
+            name:"dilshan",
+            age:20,
+            place:"mathagal"
+        }
+        document.write("I am "+person.name+". I am "+person.age+". \ I live in "+person.place+".<br><br><br>");
+        
+        var arr=["red", "blue", "green"];
+        document.write(arr[0]+"+"+arr[1]+"+"+arr[2]);
+
+    </script>
+    
+</body>
+</html>

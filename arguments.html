@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arguments</title>
+</head>
+<body style="font-size: 100px;">
+    <script>
+        function func1() {
+            document.write(arguments[0],"<br>");
+        }
+        
+        func1("GFG", 54, "rf");
+    </script>
+    <script>
+        function func2(a, b, c, d) {
+            document.write(arguments[0],"<br>");
+
+            // arguments[1] = 'new value';
+
+            document.write(arguments[1],"<br>");
+
+            document.write(arguments[2],"<br>");
+
+            document.write(arguments[3],"<br>");
+        }
+
+            func2(1, 2, 3, 4);
+
+    </script>
+
+</body>
+</html>
