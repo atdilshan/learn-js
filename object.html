@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JS Objects</title>
+</head>
+<body>
+
+<script>
+    // Method 1 (Object constructor)
+    function objMethod1() {
+        var obj = new Object();
+        console.log(obj); // {}
+
+        obj.key1 = "value 1";
+        obj.key2 = "value 2";
+
+        var subobj = new Object();
+        subobj.subKey1 = "sub value 1";
+        subobj.subKey2 = "sub value 2";
+        obj.key3 = subobj;
+
+        console.log(obj) // {key1: 'value 1', key2: 'value 2', key3: {subKey1: 'sub value 1', subKey2: 'sub value 2'}}
+        console.log(obj.key1) // value 1
+        console.log(obj.key2) // value 2
+        console.log(obj["key1"]) // value 1
+        console.log(obj["key2"]) // value 2
+        console.log(obj.key3) // {subKey1: 'sub value 1', subKey2: 'sub value 2'}
+        console.log(obj.key3.subKey1) // sub value 1
+        console.log(obj["key3"].subKey2) // sub value 2
+        console.log(obj.key3["subKey2"]) // sub value 2
+        console.log(obj.key3["subKey3"]) // undefined
+
+        subobj.subKey3 = "sub value 3";
+        console.log(obj.key3["subKey3"]) // sub value 3
+        console.log(obj) // {key1: 'value 1', key2: 'value 2', key3: {subKey1: 'sub value 1', subKey2: 'sub value 2', subKey3: 'sub value 3'}}
+    }
+
+
+    function objMethod2() {
+        // Method 2 (Object's create method)
+        var obj = Object.create(null);
+        console.log(obj) // {}
+        console.log(obj.key1) // undefined
+
+        obj.key1 = "value 1";
+        obj.key2 = "value 2";
+        console.log(obj) // {key1: 'value 1', key2: 'value 2'}
+        console.log(obj.key1) // value 1
+
+        var subobj = Object.create({}, {subKey1: {value: 'sub value 1'}, subKey2: {value: 'sub value 2'}});
+        obj.key3 = subobj;
+
+        console.log(obj) // {key1: 'value 1', key2: 'value 2', key3: {subKey1: 'sub value 1', subKey2: 'sub value 2'}}
+        console.log(obj.key1) // value 1
+        console.log(obj.key2) // value 2
+        console.log(obj["key1"]) // value 1
+        console.log(obj["key2"]) // value 2
+        console.log(obj["key3"]) // {subKey1: 'sub value 1', subKey2: 'sub value 2'}
+        console.log(obj.key3.subKey1) // sub value 1
+        console.log(obj["key3"].subKey2) // sub value 2
+        console.log(obj.key3["subKey2"]) // sub value 2
+        console.log(obj.key3["subKey3"]) // undefined
+
+        subobj.subKey3 = "sub value 3";
+        console.log(obj.key3["subKey3"]) // sub value 3
+        console.log(obj) // {key1: 'value 1', key2: 'value 2', key3: {subKey1: 'sub value 1', subKey2: 'sub value 2', subKey3: 'sub value 3'}}
+        console.log(obj["key3"]) // {subKey1: 'sub value 1', subKey2: 'sub value 2', subKey3: 'sub value 3'}
+        console.log(obj.key3.subKey1) // sub value 1
+
+    }
+
+
+    function objMethod3() {
+        // Method 3 (Object literal syntax)
+        var obj = {
+            key1: "value 1",
+            key2: "value 2",
+            key3: {
+                subKey1: "sub value 1",
+                subKey2: "sub value 2"
+
+            }
+        }
+        console.log(obj) // {key1: 'value 1', key2: 'value 2', key3: {subKey1: 'sub value 1', subKey2: 'sub value 2'}}
+        console.log(obj.key1) // value 1
+        console.log(obj.key2) // value 2
+        console.log(obj["key1"]) // value 1
+        console.log(obj["key2"]) // value 2
+        console.log(obj.key3) // {subKey1: 'sub value 1', subKey2: 'sub value 2'}
+        console.log(obj.key3.subKey1) // sub value 1
+        console.log(obj["key3"].subKey2) // sub value 2
+        console.log(obj.key3["subKey2"]) // sub value 2
+        console.log(obj.key3["subKey3"]) // undefined
+
+        obj.key3.subKey3 = "sub value 3";
+        console.log(obj.key3["subKey3"]) // sub value 3
+    }
+
+
+    function objMethod4() {
+        // Method 4 (Function constructor)
+        function Func1(value1, value2) {
+            this.key1 = value1;
+            this.key2 = value2;
+        }
+
+        var obj1 = new Func1("value 1", "value 2");
+        console.log(obj1) // Func1 {key1: 'value 1', key2: 'value 2'}
+        console.log(obj1.key1) // value 1
+
+
+        function Func2(value1) {
+            this.key1 = value1;
+            this.key2 = "value 2";
+        }
+
+        var obj2 = new Func2("value 1");
+        console.log(obj2) // Func2 {key1: 'value 1', key2: 'value 2'}
+        console.log(obj1.key2) // value 2
+
+
+        function SubFunc(subValue1, subValue2) {
+            this.subKey1 = subValue1;
+            this.subKey2 = subValue2;
+        }
+
+        var subObj = new SubFunc("sub value 1", "sub value 2");
+        console.log(subObj) // SubFunc {subKey1: 'sub value 1', subKey2: 'sub value 2'}
+
+        function Func3(value1, value2, subObj) {
+            this.key1 = value1;
+            this.key2 = value2;
+            this.key3 = subObj;
+        }
+
+        var obj3 = new Func3("value 1", "value 2", subObj);
+        console.log(obj3) // Func3 {key1: 'value 1', key2: 'value 2', key3: SubFunc {subKey1: 'sub value 1', subKey2: 'sub value 2'}}
+        console.log(obj3.key3) // SubFunc {subKey1: 'sub value 1', subKey2: 'sub value 2'}
+        console.log(obj3.key3.subKey1) // sub value 1
+    }
+
+
+    function objMethod5() {
+        // Method 5 (Function constructor with prototype)
+        function Func1(value1, value2) {
+            this.key1 = value1;
+            this.key2 = value2;
+        }
+
+        var obj1 = new Func1("value 1", "value 2");
+        console.log(obj1.constructor) // Func1(value1, value2) {
+        //     this.key1 = value1;
+        //      this.key2 = value2;
+        //   }
+        console.log(obj1.key1) // value 1
+        console.log(obj1.key2) // value 2
+
+
+        function Func2() {
+        }
+
+        Func2.prototype.key1 = "value 1";
+        Func2.prototype.key2 = "value 2";
+
+        var obj2 = new Func2();
+
+        console.log(obj2.constructor) // Func2() {}
+        console.log(obj2.key1) // value 1
+        console.log(obj2.key2) // value 2
+
+
+        function Func3() {
+        }
+
+        Func3.prototype.key1 = "value 1";
+        Func3.prototype.key2 = "value 2";
+
+        function SubFunc3() {
+        }
+
+        SubFunc3.prototype.subKey1 = "sub value 1";
+        SubFunc3.prototype.subKey2 = "sub value 2";
+
+        var subObj = new SubFunc3();
+
+        Func3.prototype.key3 = subObj;
+
+        var obj3 = new Func3();
+
+        console.log(obj3.constructor) // Func3() {}
+        console.log(obj3.key1) // value 1
+        console.log(obj3.key2) // value 2
+        console.log(obj3.key3) // SubFunc3 {}
+        console.log(obj3.key3.subKey1) // sub value 1
+        console.log(obj3.key3.subKey2) // sub value 2
+    }
+
+
+    objMethod1();
+    objMethod2();
+    objMethod3();
+    objMethod4();
+    objMethod5();
+</script>
+</body>
+</html>
