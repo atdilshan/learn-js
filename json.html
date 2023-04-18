@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JS JSON</title>
+</head>
+<body>
+<script>
+    var obj = {
+        key1: "value 1",
+        key2: "value 2",
+        key3: {
+            subKey1: "sub value 1",
+            subKey2: "sub value 2"
+
+        }
+    }
+    var jsonObj = JSON.stringify(obj)
+    var jsonToObj = JSON.parse((jsonObj))
+
+    console.log(jsonObj); // {"key1":"value 1","key2":"value 2","key3":{"subKey1":"sub value 1","subKey2":"sub value 2"}}
+    console.log(jsonToObj); // {key1: 'value 1', key2: 'value 2', key3: {subKey1: 'sub value 1', subKey2: 'sub value 2'}}
+</script>
+</body>
+</html>

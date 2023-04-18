@@ -10,8 +10,10 @@
 ### Table of Contents
 
 | No. | Contents                                                                |
-| --- |-------------------------------------------------------------------------|
+|-----|-------------------------------------------------------------------------|
 | 1   | [Object](https://github.com/atdilshan/learn-js/blob/master/object.html) |
+| 2   | [Array](https://github.com/atdilshan/learn-js/blob/master/array.html)   |
+| 3   | [JSON](https://github.com/atdilshan/learn-js/blob/master/json.html)     |
 
 
 <br/>

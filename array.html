@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JS Array</title>
+</head>
+<body>
+<script>
+    function arrMethod1() {
+        var arr1 = [1, 2, 3, 4, 5];
+
+        console.log(arr1); // [1, 2, 3, 4, 5]
+        console.log(arr1.length); // 5
+        console.log(arr1[1]); // 2
+        console.log(arr1[5]); // undefined
+        console.log(Object.keys(arr1)); // ['0', '1', '2', '3', '4']
+
+        arr1[5] = 6; // we can use like arr1[0o5] = 6;
+        console.log(arr1); // [1, 2, 3, 4, 5, 6]
+        console.log(arr1.length); // 6
+        console.log(arr1[1]); // 2  (we can use like arr1[0o1])
+        console.log(arr1[5]); // 6
+
+        arr1[0] = 0;
+        console.log(arr1); // [0, 2, 3, 4, 5, 6]
+        console.log(arr1.length); // 6
+        console.log(arr1[0]); // 0
+        console.log(arr1[5]); // 6
+
+        arr1.length = 10;
+        console.log(arr1); // ([0, 2, 3, 4, 5, 6, empty × 4]
+
+        arr1[8] = 8;
+        console.log(arr1); // ([0, 2, 3, 4, 5, 6, empty × 2, 8, empty]
+    }
+
+
+    function arrMethod2() {
+        var arr1 = [1, 2, 3, 4, 5];
+
+        console.log(arr1); // [1, 2, 3, 4, 5]
+
+        arr1.push(6, 7)
+        console.log(arr1); // [1, 2, 3, 4, 5, 6, 7]
+
+        arr1.pop()
+        console.log(arr1); // [1, 2, 3, 4, 5, 6]
+
+        arr1.shift()
+        console.log(arr1); // [2, 3, 4, 5, 6]
+
+        arr1.unshift(1)
+        console.log(arr1); // [1, 2, 3, 4, 5, 6]
+
+        console.log(arr1.at(3)); // 4  {array = [1, 2, 3, 4, 5, 6]}
+        console.log(arr1.at(-3)); // 4  {array = [1, 2, 3, 4, 5, 6]}
+
+        arr1.reverse()
+        console.log(arr1); // [6, 5, 4, 3, 2, 1]
+    }
+
+    function arrMethod3() {
+        // Array fill
+        console.log([1, 2, 3].fill(4)); // [4, 4, 4]
+        console.log([1, 2, 3].fill(4, 1)); // [1, 4, 4]
+        console.log([1, 2, 3].fill(4, 1, 2)); // [1, 4, 3]
+        console.log([1, 2, 3].fill(4, 1, 1)); // [1, 2, 3]
+        console.log([1, 2, 3].fill(4, 3, 3)); // [1, 2, 3]
+        console.log([1, 2, 3].fill(4, -3, -2)); // [4, 2, 3]
+        console.log([1, 2, 3].fill(4, NaN, NaN)); // [1, 2, 3]
+        console.log([1, 2, 3].fill(4, 3, 5)); // [1, 2, 3]
+        console.log(Array(3).fill(4)); // [4, 4, 4]
+
+        const arr = Array(3).fill({}); // [{}, {}, {}]
+        arr[0].hi = "hi"; // [{ hi: "hi" }, { hi: "hi" }, { hi: "hi" }]
+        console.log(arr)
+    }
+
+    function arrMethod4() {
+        const arr = new Array(3);
+        for (let i = 0; i < arr.length; i++) {
+            arr[i] = new Array(4).fill(1); // Creating an array of size 4 and filled of 1
+        }
+        arr[0][0] = 10;
+        console.log(arr); // [0: [10, 1, 1, 1], 1: [1, 1, 1, 1], 2: [1, 1, 1, 1]]
+        console.log(arr[0][0]); // 10
+        console.log(arr[1][0]); // 1
+        console.log(arr[2][0]); // 1
+    }
+
+    function arrMethod5() {
+        var arr = [1, 2, 3, 4, 5];
+
+        console.log(arr.slice(0, 2)); // [1, 2]
+        console.log(arr.slice(2, 3)); // [3]
+        console.log(arr.slice(3)); // [4, 5]
+    }
+
+    function arrMethod6() {
+        let arr1 = [1, 2, 3, 4, 5];
+        let arr2 = [1, 2, 3, 4, 5];
+        let arr3 = [1, 2, 3, 4, 5];
+
+        console.log(arr1); // [1, 2, 3, 4, 5]
+        console.log(arr2); // [1, 2, 3, 4, 5]
+        console.log(arr3); // [1, 2, 3, 4, 5]
+
+        let arrSplice1 = arr1.splice(0, 2); // returns [1, 2]; original array: [3, 4, 5]
+        let arrSplice2 = arr2.splice(3); // returns [4, 5]; original array: [1, 2, 3]
+        let arrSplice3 = arr3.splice(3, 1, "a", "b", "c"); // returns [4]; original array: [1, 2, 3, "a", "b", "c", 5]
+
+        console.log(arrSplice1); // [1, 2]
+        console.log(arrSplice2); // [4, 5]
+        console.log(arrSplice3); // [4]
+
+// Note: Splice method modifies the original array and returns the deleted array.
+
+        console.log(arr1); // [3, 4, 5]
+        console.log(arr2); // [1, 2, 3]
+        console.log(arr3); // [1, 2, 3, "a", "b", "c", 5]
+    }
+
+    // arrMethod1();
+    // arrMethod2();
+    // arrMethod3();
+    // arrMethod4();
+    // arrMethod5();
+    arrMethod6();
+</script>
+</body>
+</html>
