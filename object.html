@@ -197,11 +197,60 @@
     }
 
 
-    objMethod1();
-    objMethod2();
-    objMethod3();
-    objMethod4();
-    objMethod5();
+    function objMethod6() {
+        // Method 5 (ES6 Class syntax)
+        class Cls {
+            constructor(name, age) {
+                this.name = name;
+                this.age = age;
+            }
+
+            func1() {
+                console.log("Hello, my name is " + this.name + ".");
+            }
+
+            func2() {
+                console.log("Hello, my name is " + this.name + ", and I'm " + this.age + " years old.");
+            }
+        }
+
+        const myObject = new Cls("John", 30);
+        myObject.func1(); // Hello, my name is John
+        myObject.func2(); // Hello, my name is John, and I'm 30 years old.
+    }
+
+
+    // objMethod1();
+    // objMethod2();
+    // objMethod3();
+    // objMethod4();
+    // objMethod5();
+    // objMethod6();
+
+
+    function callApplyBind() {
+        // Difference between Call, Apply and Bind
+        var subObj1 = {subKey1: "sub value 1", subKey2: "sub value 2"};
+        var subObj2 = {subKey1: "sub value 3", subKey2: "sub value 4"};
+
+        function func1(value1, value2) {
+            return (value1 + ", " + value2 + ", " + this.subKey1 + ", " + this.subKey2);
+        }
+
+        console.log(func1.call(subObj1, "value 1", "value 2")); // value 1, value 2, sub value 1, sub value 2
+        console.log(func1.call(subObj2, "value 3", "value 4")); // value 3, value 4, sub value 3, sub value 4
+
+        console.log(func1.apply(subObj1, ["value 1", "value 2"])); // value 1, value 2, sub value 1, sub value 2
+        console.log(func1.apply(subObj2, ["value 3", "value 4"])); // value 3, value 4, sub value 3, sub value 4
+
+
+        var binded1 = func1.bind(subObj1);
+        var binded2 = func1.bind(subObj2);
+        console.log(binded1("value 1", "value 2")); // value 1, value 2, sub value 1, sub value 2
+        console.log(binded2("value 3", "value 4")); // value 3, value 4, sub value 3, sub value 4
+    }
+
+    callApplyBind();
 </script>
 </body>
 </html>
